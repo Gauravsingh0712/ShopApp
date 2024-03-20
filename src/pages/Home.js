@@ -7,6 +7,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
 
+  //fetch api function
   async function fetchProductData() {
     setLoading(true);
     try {
@@ -32,6 +33,7 @@ const Home = () => {
         <Spinner />
       ) : posts.length > 0 ? (
         <div>
+          {/* mapping the posts from api */}
           {posts.map((post) => (
             <Product key={posts.id} post={post} />
           ))}
