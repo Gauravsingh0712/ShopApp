@@ -1,6 +1,19 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Product = ({ post }) => {
+  //fetching cart from redux store
+  const { cart } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const AddToCart = () => {
+    dispatch(add(post));
+  };
+
+  const RemoveFromCart = () => {
+    dispatch(remove(post.id));
+  };
+
   return (
     <div>
       <div>
@@ -15,7 +28,13 @@ const Product = ({ post }) => {
       <div>
         <p>{post.price}</p>
       </div>
-      <button>{true ? <p>Remove Item</p> : <p>Add to Cart</p>}</button>
+      {cart.some((p) =>
+        p.id === post.id ? (
+          <button onClick={RemoveFromCart}>Remove Item</button>
+        ) : (
+          <button onClick={AddToCart}>Add to Cart</button>
+        )
+      )}
     </div>
   );
 };
