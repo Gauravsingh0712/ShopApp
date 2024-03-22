@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { add, remove } from "../redux/Slices/CartSlice";
 
 const Product = ({ post }) => {
   //fetching cart from redux store
@@ -28,12 +29,10 @@ const Product = ({ post }) => {
       <div>
         <p>{post.price}</p>
       </div>
-      {cart.some((p) =>
-        p.id === post.id ? (
-          <button onClick={RemoveFromCart}>Remove Item</button>
-        ) : (
-          <button onClick={AddToCart}>Add to Cart</button>
-        )
+      {cart.some((p) => p.id == post.id) ? (
+        <button onClick={RemoveFromCart}>Remove Item</button>
+      ) : (
+        <button onClick={AddToCart}>Add to Cart</button>
       )}
     </div>
   );
