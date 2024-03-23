@@ -14,7 +14,7 @@ const Navbar = () => {
           </div>
         </NavLink>
 
-        <div className="flex items-center font-medium text-slate-100 mr-5 space-x-6">
+        <div className="flex items-center font-medium text-black-100 mr-5 space-x-6">
           <NavLink to="/">
             <p>Home</p>
           </NavLink>
